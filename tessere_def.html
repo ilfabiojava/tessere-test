@@ -189,10 +189,10 @@
                 <label class="field-label" style="margin-left:15px">Abilitazione tessera</label>
                 <input class="checkbox" type="checkbox"><br><br>
                 <div class="button-container">
-                    <button onclick="addInfo('Confermato')">Conferma accesso</button>
+                    <button onclick="if (checkServizio()) addInfo('Confermato')">Conferma accesso</button>
                 </div><br>
                 <div class="button-container">
-                    <button onclick="addInfo('Negato')">Nega accesso</button>
+                    <button onclick="if (checkServizio()) addInfo('Negato')">Nega accesso</button>
                 </div><br>
                 <textarea id="txt_note" type="text" placeholder="Note accesso..."></textarea>
                 <br><br><br>
@@ -239,6 +239,17 @@ function addInfo(stato) {
 
     document.getElementById("txt_note").value = "";  
 
+}
+
+function checkServizio() {
+    var servizio = document.getElementById("bottone").value;
+
+    if (servizio === "Scegli servizio...") {
+        alert("Servizio non selezionato!");
+        return false;
+    }
+
+    return true;
 }
 </script>
 </html>

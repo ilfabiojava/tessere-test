@@ -148,7 +148,12 @@
     <div class="header" style="width:100%">
         <img src="https://www.portaapertamodena.it/wp-content/uploads/2022/06/cropped-apa_modena_LOGO.png" height="50" width="200" align="left"></img>
         <div class="header" style="float:left; margin-left:5%;">
-            <select style="width:200px;margin-top:5%;height:26px" id="bottone"><!--TODO!--></select>
+            <select style="width:200px;margin-top:5%;height:26px" id="bottone">
+                <option selected="selected" hidden="hidden" disabled="disabled">Scegli servizio...</option>
+                {% for servizio in servizi%}
+                <option>{{ servizio.1 }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="header" style="text-align: center; float: left;">
             <p style="float:left;">Data corrente: </p>

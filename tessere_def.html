@@ -154,7 +154,7 @@
         </div>
     </div>
     <div class="content">
-        <table>
+        <table id="table">
             <colgroup>
                 <col style="width: 200px">
                 <col style="width: 100px">
@@ -168,21 +168,6 @@
                     <th>Note</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>aaaaaa</td>
-                    <td>aaaaaaaaa</td>
-                    <td>bbbbbbb</td>
-                    <td>bbbbbbbbbbbbbbbbbb</td>
-                </tr>
-                <tr>
-                    <td>aaaaaa</td>
-                    <td>aaaaaaaaa</td>
-                    <td>bbbbbbb</td>
-                    <td>bbbbbbbbbbbbbbbbbb</td>
-                </tr>
-                <!-- More table rows... -->
-            </tbody>
         </table>
         <div>
             <div style="height:80vh;width:425px;border: solid black 1px;float:right; margin-top:1vh">
@@ -193,10 +178,10 @@
                 <label class="field-label">Abilitazione tessera</label>
                 <input class="checkbox" type="checkbox"><br><br>
                 <div class="button-container">
-                    <button>Conferma accesso</button>
+                    <button onclick="addInfo('Confermato')">Conferma accesso</button>
                 </div><br>
                 <div class="button-container">
-                    <button>Nega accesso</button>
+                    <button onclick="addInfo('Negato')">Nega accesso</button>
                 </div><br>
                 <textarea id="txt_note" type="text" placeholder="Note accesso..."></textarea>
                 <br><br><br><br>
@@ -214,5 +199,32 @@
 <script type="text/javascript">
     const today = new Date();
     document.getElementById("data").innerHTML = today.toLocaleDateString("it-IT");
+
+
+    var limiteRighe = 10; // Imposta il numero massimo di righe desiderate
+
+function addInfo(stato) {
+    var table = document.getElementById("table");
+    var today = new Date();
+    var data = today.toLocaleDateString();
+    var note = document.getElementById("txt_note").value;
+
+    // Rimuovi la riga più vecchia se il numero di righe supera il limite
+    if (table.rows.length > limiteRighe) {
+        table.deleteRow(-1); // Rimuovi l'ultima riga (la più vecchia)
+    }
+
+    var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+
+    cell1.innerHTML = data;
+    cell2.innerHTML = "Mensa";
+    cell3.innerHTML = stato;
+    cell4.innerHTML = note;
+
+}
 </script>
 </html>

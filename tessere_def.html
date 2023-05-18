@@ -159,8 +159,8 @@
             <p style="float:left;">Data corrente: </p>
             <p id="data" style="float:left; margin-left:5px"></p>
         </div>
-        <div id="circle" style="width:100px; height:100px; float:left; text-align:center; margin-left:21vw;">
-            <p id="user" style="color:white;">USER<!--TODO!--></p>
+        <div id="circle" style="width:100px; height:100px; float:left; text-align:center; margin-left:30vw;">
+            <p id="user" style="color:white;">{% if user.is_authenticated %} {{ user.get_username }} {% endif %}</p>
             <form><button type="submit">LOGOUT</button><!--TODO!--></form>
         </div>
     </div>

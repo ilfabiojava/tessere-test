@@ -148,7 +148,7 @@
     <div class="header" style="width:100%">
         <img src="https://www.portaapertamodena.it/wp-content/uploads/2022/06/cropped-apa_modena_LOGO.png" height="50" width="200" align="left"></img>
         <div class="header" style="float:left; margin-left:5%;">
-            <select style="width:200px;margin-top:5%;height:26px"><!--TODO!--></select>
+            <select style="width:200px;margin-top:5%;height:26px" id="bottone"><!--TODO!--></select>
         </div>
         <div class="header" style="text-align: center; float: left;">
             <p style="float:left;">Data corrente: </p>
@@ -214,6 +214,7 @@ function addInfo(stato) {
     var today = new Date();
     var data = today.toLocaleDateString();
     var note = document.getElementById("txt_note").value;
+    var box = document.getElementById("bottone").value;
 
     // Rimuovi la riga più vecchia se il numero di righe supera il limite
     if (table.rows.length > limiteRighe) {
@@ -227,7 +228,7 @@ function addInfo(stato) {
     var cell4 = row.insertCell(3);
 
     cell1.innerHTML = data;
-    cell2.innerHTML = "Mensa";
+    cell2.innerHTML = box;
     cell3.innerHTML = stato;
     cell4.innerHTML = note;
 
